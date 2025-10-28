@@ -120,17 +120,23 @@ public class SortingList extends Application {
 
         final boolean[] order = {true};
 
-        sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                students.sort(new NameSorter(order[0]));
-                order[0] = !order[0];
-            }
+        // Сортування за ім’ям
+        sortByNameButton.setOnAction(event -> {
+            students.sort(new NameSorter(order[0]));
+            order[0] = !order[0];
         });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за прізвищем"
+        // Сортування за прізвищем
+        sortByLastNameButton.setOnAction(event -> {
+            students.sort(new LastNameSorter(order[0]));
+            order[0] = !order[0];
+        });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за оцінкою"
+        // Сортування за оцінкою
+        sortByMarkButton.setOnAction(event -> {
+            students.sort(new MarkSorter(order[0]));
+            order[0] = !order[0];
+        });
 
         // Створюємо горизонтальний ряд
         HBox hb = new HBox();
